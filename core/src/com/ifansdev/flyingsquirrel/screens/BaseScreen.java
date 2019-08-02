@@ -2,7 +2,6 @@ package com.ifansdev.flyingsquirrel.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.ifansdev.flyingsquirrel.MyGame;
@@ -11,16 +10,16 @@ public class BaseScreen implements Screen {
     MyGame myGame;
     Stage stage;
 
-    private int gameWidth;
-    private int gameHeight;
+    int screenWidth;
+    int screenHeight;
 
     public BaseScreen(MyGame myGame) {
         this.myGame = myGame;
 
-        gameWidth = 320;
-        gameHeight = (int) ( (float) Gdx.graphics.getHeight() / ( (float) Gdx.graphics.getWidth() / gameWidth));
+        screenWidth = 320;
+        screenHeight = (int) ( (float) Gdx.graphics.getHeight() / ( (float) Gdx.graphics.getWidth() / screenWidth));
 
-        stage = new Stage(new FillViewport(gameWidth, gameHeight));
+        stage = new Stage(new FillViewport(screenWidth, screenHeight));
     }
 
     @Override
@@ -30,9 +29,6 @@ public class BaseScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(148/255f,204/255f,1,0);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         stage.act(delta);
         stage.draw();
     }

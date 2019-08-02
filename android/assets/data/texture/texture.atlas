@@ -1,0 +1,111 @@
+
+texture.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bg
+  rotate: false
+  xy: 324, 124
+  size: 320, 130
+  orig: 320, 130
+  offset: 0, 0
+  index: -1
+flower
+  rotate: false
+  xy: 692, 193
+  size: 9, 14
+  orig: 9, 14
+  offset: 0, 0
+  index: -1
+forest
+  rotate: false
+  xy: 2, 124
+  size: 320, 130
+  orig: 320, 130
+  offset: 0, 0
+  index: -1
+gamePauseBtn
+  rotate: false
+  xy: 646, 149
+  size: 37, 37
+  orig: 37, 37
+  offset: 0, 0
+  index: -1
+gamesControllerGreen
+  rotate: false
+  xy: 324, 79
+  size: 61, 43
+  orig: 61, 43
+  offset: 0, 0
+  index: -1
+gamesControllerGrey
+  rotate: false
+  xy: 387, 80
+  size: 60, 42
+  orig: 60, 42
+  offset: 0, 0
+  index: -1
+ground
+  rotate: false
+  xy: 2, 42
+  size: 320, 80
+  orig: 320, 80
+  offset: 0, 0
+  index: -1
+leaderboards
+  rotate: false
+  xy: 692, 209
+  size: 57, 45
+  orig: 57, 45
+  offset: 0, 0
+  index: -1
+menuPlayBtn
+  rotate: false
+  xy: 2, 3
+  size: 66, 37
+  orig: 66, 37
+  offset: 0, 0
+  index: -1
+squirrelDown
+  rotate: false
+  xy: 751, 212
+  size: 22, 42
+  orig: 22, 42
+  offset: 0, 0
+  index: -1
+squirrelSpin
+  rotate: false
+  xy: 449, 100
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+squirrelTailDown
+  rotate: false
+  xy: 324, 59
+  size: 39, 18
+  orig: 39, 18
+  offset: 0, 0
+  index: -1
+squirrelTailMedium
+  rotate: false
+  xy: 70, 22
+  size: 39, 18
+  orig: 39, 18
+  offset: 0, 0
+  index: -1
+squirrelTailUp
+  rotate: false
+  xy: 70, 2
+  size: 39, 18
+  orig: 39, 18
+  offset: 0, 0
+  index: -1
+stone
+  rotate: false
+  xy: 646, 188
+  size: 44, 66
+  orig: 44, 66
+  offset: 0, 0
+  index: -1

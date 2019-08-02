@@ -1,0 +1,17 @@
+{
+  "com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+    "menuPlayBtn": {
+      "up": "menuPlayBtn"
+    },
+    "pausePlayBtn": {
+      "up": "gamePauseBtn"
+    },
+    "googlePlayGamesBtn": {
+      "up": "gamesControllerGrey",
+      "checked": "gamesControllerGreen"
+    },
+    "leaderboardsBtn": {
+      "up": "leaderboards"
+    }
+  }
+}
