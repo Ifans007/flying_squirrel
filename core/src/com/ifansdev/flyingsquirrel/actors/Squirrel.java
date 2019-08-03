@@ -4,17 +4,26 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.ifansdev.flyingsquirrel.MyGame;
 import com.ifansdev.flyingsquirrel.assets.Assets;
 
 public class Squirrel extends Actor {
+
     private TextureRegion squirrelSpin;
     private TextureRegion squirrelDown;
+    private TextureRegion squirrelTailMedium;
     private Animation<TextureRegion> squirrelFlyAnimation;
 
     private float animationTime;
     private float rotateSquirrelSpin;
+
+    private Circle boundCircle;
+    private Rectangle boundRectangleFly;
+    private Rectangle boundRectangleDown;
 
     private int yPosition;
     private int gravity;
@@ -23,8 +32,10 @@ public class Squirrel extends Actor {
     private boolean twoTouch;
 
     public Squirrel(MyGame myGame) {
-        squirrelSpin = myGame.getAssets().getTexture(Assets.SQUIRREL_SPIN);
-        squirrelDown = myGame.getAssets().getTexture(Assets.SQUIRREL_DOWN);
+
+        squirrelSpin   = myGame.getAssets().getTexture(Assets.SQUIRREL_SPIN);
+        squirrelDown   = myGame.getAssets().getTexture(Assets.SQUIRREL_DOWN);
+        squirrelTailMedium = myGame.getAssets().getTexture(Assets.SQUIRREL_TAIL_MEDIUM);
 
         TextureRegion[] squirrelFly = myGame.getAssets().getSquirrelFly();
         squirrelFlyAnimation = new Animation<>(0.1f, squirrelFly);
@@ -34,6 +45,14 @@ public class Squirrel extends Actor {
         setY(68);
         yPosition = (int) getY();
         gravity = -13;
+
+        boundCircle = new Circle(47, getY(), (squirrelSpin.getRegionWidth() / 2f) - 1);
+
+        boundRectangleFly = new Rectangle(39, getY(), squirrelTailMedium.getRegionWidth()
+                - squirrelTailMedium.getRegionWidth() / 3f, squirrelTailMedium.getRegionHeight());
+
+        boundRectangleDown = new Rectangle(46, getY(), squirrelDown.getRegionWidth() / 2f,
+                squirrelDown.getRegionHeight());
     }
 
     @Override
@@ -83,6 +102,25 @@ public class Squirrel extends Actor {
             velocity = 40;
             twoTouch = true;
         }
+    }
+
+    public boolean collides(Rectangle boundStone) {
+        if (gravity == -13) {
+            boundCircle.setY(getY() + 10);
+            if (Intersector.overlaps(boundCircle, boundStone)) return true;
+        }
+
+        if (gravity == -1) {
+            boundRectangleFly.setY(getY());
+            if (Intersector.overlaps(boundRectangleFly, boundStone)) return true;
+        }
+
+        if (gravity == -110) {
+            boundRectangleDown.setY(getY());
+            if (Intersector.overlaps(boundRectangleDown, boundStone)) return true;
+        }
+
+        return false;
     }
 
 }

@@ -1,31 +1,42 @@
 package com.ifansdev.flyingsquirrel.screens;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.ifansdev.flyingsquirrel.MyGame;
+import com.ifansdev.flyingsquirrel.actors.movingforeground.Flower;
 import com.ifansdev.flyingsquirrel.actors.Forest;
 import com.ifansdev.flyingsquirrel.actors.Squirrel;
-import com.ifansdev.flyingsquirrel.actors.Stone;
+import com.ifansdev.flyingsquirrel.actors.movingforeground.Stone;
 import com.ifansdev.flyingsquirrel.assets.Assets;
 
 
 public class GameScreen extends BaseScreen {
+
     private Squirrel squirrel;
 
     private Array<Stone> stoneArray;
     private final int COUNT_STONE = 4;
 
+    private Array<Flower> flowerArray;
+    private final int COUNT_FLOWER = 5;
+
+    private final float SPEED = 200f;
+
     public GameScreen(MyGame myGame) {
         super(myGame);
 
         squirrel = new Squirrel(myGame);
-        stoneArray = new Array<>();
 
+        stoneArray = new Array<>();
         for (int i = 0; i < COUNT_STONE; i++) {
-            stoneArray.add(new Stone(myGame, i + 1, COUNT_STONE, stoneArray, screenWidth));
+            stoneArray.add(new Stone(myGame, i + 1, COUNT_STONE, stoneArray, screenWidth, SPEED));
+        }
+
+        flowerArray = new Array<>();
+        for (int i = 0; i < COUNT_FLOWER; i++) {
+            flowerArray.add(new Flower(myGame, i + 1, COUNT_STONE, flowerArray, screenWidth, SPEED));
         }
 
         Image ground = new Image(myGame.getAssets().getTexture(Assets.GROUND));
@@ -35,7 +46,7 @@ public class GameScreen extends BaseScreen {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
                 squirrel.onClick();
-                
+
                 return super.touchDown(event, x, y, pointer, button);
             }
         });
@@ -48,5 +59,22 @@ public class GameScreen extends BaseScreen {
             stage.addActor(stoneArray.get(i));
         }
 
+        for (int i = 0; i < flowerArray.size; i++) {
+            stage.addActor(flowerArray.get(i));
+        }
+
+    }
+
+    @Override
+    public void render(float delta) {
+        super.render(delta);
+
+        for (Stone stone : stoneArray) {
+            if (stone.getX() < 75) {
+                if (squirrel.collides(stone.getBoundStone())) {
+                    System.out.println("gameOver");
+                }
+            }
+        }
     }
 }

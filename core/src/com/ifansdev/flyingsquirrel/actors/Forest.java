@@ -7,10 +7,12 @@ import com.ifansdev.flyingsquirrel.MyGame;
 import com.ifansdev.flyingsquirrel.assets.Assets;
 
 public class Forest extends Actor {
+
     private TextureRegion forest;
     private TextureRegion bg;
 
     public Forest(MyGame myGame) {
+
         forest = myGame.getAssets().getTexture(Assets.FOREST);
         bg     = myGame.getAssets().getTexture(Assets.BG);
     }

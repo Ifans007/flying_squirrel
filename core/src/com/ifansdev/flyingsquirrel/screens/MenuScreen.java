@@ -11,6 +11,7 @@ import com.ifansdev.flyingsquirrel.MyGame;
 import com.ifansdev.flyingsquirrel.actors.Forest;
 
 public class MenuScreen extends BaseScreen {
+
     private Button menuStartBtn;
 
     private long backPressed;
