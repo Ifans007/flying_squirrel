@@ -119,5 +119,6 @@ public class GameScreen extends BaseScreen {
     public void hide() {
         super.hide();
         squirrel.isAnimation(false);
+        score.checkScoreLeaderboards();
     }
 }

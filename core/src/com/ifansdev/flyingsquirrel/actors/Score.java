@@ -15,9 +15,9 @@ public class Score extends Actor {
 
     private int highScoreMoveY;
     private Integer scoreInteger = 0;
+    private int countScore;
     private boolean isHighScore;
     private boolean isGameOver;
-
 
     public Score(MyGame myGame, int screenHeight) {
         this.myGame = myGame;
@@ -59,7 +59,6 @@ public class Score extends Actor {
     }
 
     public void checkScore() {
-
         if (scoreInteger > myGame.getSaveScore().getHighScore()) {
             myGame.getSaveScore().setHighScore(scoreInteger);
             isHighScore = true;
@@ -68,5 +67,16 @@ public class Score extends Actor {
             isGameOver = true;
         }
 
+    }
+
+    public void checkScoreLeaderboards() {
+        if (myGame.getIForAndroidLauncher() == null) {
+            return;
+        }
+
+        if (scoreInteger > countScore) {
+            countScore = scoreInteger;
+            myGame.getIForAndroidLauncher().getMyLeaderboard().pushAccomplishments(countScore);
+        }
     }
 }
