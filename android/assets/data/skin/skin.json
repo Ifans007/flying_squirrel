@@ -3,7 +3,10 @@
     "menuPlayBtn": {
       "up": "menuPlayBtn"
     },
-    "pausePlayBtn": {
+    "gamePlayBtn": {
+      "up": "gamePlayBtn"
+    },
+    "gamePauseBtn": {
       "up": "gamePauseBtn"
     },
     "googlePlayGamesBtn": {

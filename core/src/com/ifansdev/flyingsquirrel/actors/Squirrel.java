@@ -30,6 +30,7 @@ public class Squirrel extends Actor {
     private int velocity;
 
     private boolean twoTouch;
+    private boolean isAnimation;
 
     public Squirrel(MyGame myGame) {
 
@@ -79,8 +80,10 @@ public class Squirrel extends Actor {
         if (gravity == -1) {
             TextureRegion currentFrame = squirrelFlyAnimation.getKeyFrame(animationTime, true);
             batch.draw(currentFrame, getX() - 10, getY());
-            animationTime += Gdx.graphics.getDeltaTime();
 
+            if (isAnimation) {
+                animationTime += Gdx.graphics.getDeltaTime();
+            }
         }
 
         if (gravity == -110) {
@@ -121,6 +124,10 @@ public class Squirrel extends Actor {
         }
 
         return false;
+    }
+
+    public void isAnimation(boolean b) {
+        isAnimation = b;
     }
 
 }

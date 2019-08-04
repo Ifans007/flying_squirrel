@@ -39,6 +39,10 @@ public class MyGame extends Game {
 		setScreen(menuScreen = new MenuScreen(this));
 	}
 
+	public MenuScreen getMenuScreen() {
+		return menuScreen;
+	}
+
 	public Assets getAssets() {
 		return assets;
 	}

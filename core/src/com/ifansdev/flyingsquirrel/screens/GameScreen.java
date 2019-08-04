@@ -1,6 +1,7 @@
 package com.ifansdev.flyingsquirrel.screens;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
@@ -27,7 +28,10 @@ public class GameScreen extends BaseScreen {
 
     private Score score;
 
-    public GameScreen(MyGame myGame) {
+    private Button pausePlayBtn;
+    private PauseScreen pauseScreen;
+
+    public GameScreen(final MyGame myGame) {
         super(myGame);
 
         squirrel = new Squirrel(myGame);
@@ -46,11 +50,29 @@ public class GameScreen extends BaseScreen {
             flowerArray.add(new Flower(myGame, i + 1, COUNT_STONE, flowerArray, screenWidth, SPEED));
         }
 
+        pausePlayBtn = new Button(myGame.getAssets().getSkin(), "gamePauseBtn");
+        pausePlayBtn.setPosition(screenWidth - pausePlayBtn.getMinWidth(),
+                screenHeight - pausePlayBtn.getMinHeight());
+
+        pauseScreen = new PauseScreen(myGame, GameScreen.this);
+
         stage.addListener(new ClickListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 
-                squirrel.onClick();
+                if (stage.hit(x, y, false) != pausePlayBtn) {
+                    squirrel.onClick();
+                }
+
+                return super.touchDown(event, x, y, pointer, button);
+            }
+        });
+
+        pausePlayBtn.addListener(new ClickListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+
+                myGame.setScreen(pauseScreen);
 
                 return super.touchDown(event, x, y, pointer, button);
             }
@@ -69,6 +91,8 @@ public class GameScreen extends BaseScreen {
             stage.addActor(flowerArray.get(i));
         }
 
+        stage.addActor(pausePlayBtn);
+
     }
 
     @Override
@@ -83,5 +107,17 @@ public class GameScreen extends BaseScreen {
                 }
             }
         }
+    }
+
+    @Override
+    public void show() {
+        super.show();
+        squirrel.isAnimation(true);
+    }
+
+    @Override
+    public void hide() {
+        super.hide();
+        squirrel.isAnimation(false);
     }
 }

@@ -6,105 +6,112 @@ filter: Nearest,Nearest
 repeat: none
 bg
   rotate: false
-  xy: 324, 124
+  xy: 2, 123
   size: 320, 130
   orig: 320, 130
   offset: 0, 0
   index: -1
 flower
   rotate: false
-  xy: 692, 193
+  xy: 109, 25
   size: 9, 14
   orig: 9, 14
   offset: 0, 0
   index: -1
 forest
   rotate: false
-  xy: 2, 124
+  xy: 324, 123
   size: 320, 130
   orig: 320, 130
   offset: 0, 0
   index: -1
 gamePauseBtn
   rotate: false
-  xy: 646, 149
+  xy: 646, 148
+  size: 37, 37
+  orig: 37, 37
+  offset: 0, 0
+  index: -1
+gamePlayBtn
+  rotate: false
+  xy: 70, 2
   size: 37, 37
   orig: 37, 37
   offset: 0, 0
   index: -1
 gamesControllerGreen
   rotate: false
-  xy: 324, 79
+  xy: 324, 78
   size: 61, 43
   orig: 61, 43
   offset: 0, 0
   index: -1
 gamesControllerGrey
   rotate: false
-  xy: 387, 80
+  xy: 387, 79
   size: 60, 42
   orig: 60, 42
   offset: 0, 0
   index: -1
 ground
   rotate: false
-  xy: 2, 42
+  xy: 2, 41
   size: 320, 80
   orig: 320, 80
   offset: 0, 0
   index: -1
 leaderboards
   rotate: false
-  xy: 692, 209
+  xy: 692, 208
   size: 57, 45
   orig: 57, 45
   offset: 0, 0
   index: -1
 menuPlayBtn
   rotate: false
-  xy: 2, 3
+  xy: 2, 2
   size: 66, 37
   orig: 66, 37
   offset: 0, 0
   index: -1
 squirrelDown
   rotate: false
-  xy: 751, 212
+  xy: 751, 211
   size: 22, 42
   orig: 22, 42
   offset: 0, 0
   index: -1
 squirrelSpin
   rotate: false
-  xy: 449, 100
+  xy: 646, 124
   size: 22, 22
   orig: 22, 22
   offset: 0, 0
   index: -1
 squirrelTailDown
   rotate: false
-  xy: 324, 59
+  xy: 692, 188
   size: 39, 18
   orig: 39, 18
   offset: 0, 0
   index: -1
 squirrelTailMedium
   rotate: false
-  xy: 70, 22
+  xy: 449, 103
   size: 39, 18
   orig: 39, 18
   offset: 0, 0
   index: -1
 squirrelTailUp
   rotate: false
-  xy: 70, 2
+  xy: 324, 58
   size: 39, 18
   orig: 39, 18
   offset: 0, 0
   index: -1
 stone
   rotate: false
-  xy: 646, 188
+  xy: 646, 187
   size: 44, 66
   orig: 44, 66
   offset: 0, 0

@@ -18,6 +18,7 @@ public class MenuScreen extends BaseScreen {
     private Button menuStartBtn;
 
     private long backPressed;
+    private Label exitLabel;
 
     public MenuScreen(final MyGame myGame) {
         super(myGame);
@@ -38,6 +39,16 @@ public class MenuScreen extends BaseScreen {
             public void clicked(InputEvent event, float x, float y) {
                 myGame.setScreen(new GameScreen(myGame));
                 super.clicked(event, x, y);
+            }
+        });
+
+        exitLabel.addListener(new ClickListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+
+                Gdx.app.exit();
+
+                return super.touchDown(event, x, y, pointer, button);
             }
         });
 
@@ -64,11 +75,14 @@ public class MenuScreen extends BaseScreen {
         table.setFillParent(true);
 
         menuStartBtn = new Button(table.getSkin(), "menuPlayBtn");
+        exitLabel = new Label("EXIT", myGame.getAssets().getSkin());
+        exitLabel.setPosition(240, 40);
 
-        table.row().expandX();
+        table.row().expandX().colspan(3);
         table.add(menuStartBtn).uniformX();
 
         stage.addActor(table);
+        stage.addActor(exitLabel);
     }
 
     private void closeApp() {
