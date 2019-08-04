@@ -6,7 +6,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.ifansdev.flyingsquirrel.actors.Score;
 import com.ifansdev.flyingsquirrel.assets.Assets;
+import com.ifansdev.flyingsquirrel.assets.SaveScore;
 import com.ifansdev.flyingsquirrel.helpers.IForAndroidLauncher;
 import com.ifansdev.flyingsquirrel.screens.BaseScreen;
 import com.ifansdev.flyingsquirrel.screens.GameScreen;
@@ -16,6 +18,7 @@ public class MyGame extends Game {
 	private IForAndroidLauncher iForAndroidLauncher;
 	private MenuScreen menuScreen;
 	private Assets assets;
+	private SaveScore saveScore;
 
 	@Override
 	public void create () {
@@ -31,12 +34,17 @@ public class MyGame extends Game {
 	}
 
 	void setScreen() {
-		assets = new Assets();
+		assets     = new Assets();
+		saveScore  = new SaveScore();
 		setScreen(menuScreen = new MenuScreen(this));
 	}
 
 	public Assets getAssets() {
 		return assets;
+	}
+
+	public SaveScore getSaveScore() {
+		return saveScore;
 	}
 
 	public IForAndroidLauncher getIForAndroidLauncher() {

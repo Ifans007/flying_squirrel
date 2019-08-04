@@ -29,8 +29,6 @@ public class Assets {
 
     private TextureAtlas atlas;
 
-    private BitmapFont font;
-
     private Skin skin;
 
     public Assets() {
@@ -45,13 +43,14 @@ public class Assets {
         FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
         fontParameter.color = Color.RED;
-        fontParameter.size = 24;
+        fontParameter.size = 28;
         fontParameter.borderColor = Color.BLACK;
-        fontParameter.borderWidth = 2;
+        fontParameter.borderWidth = 1.2f;
         fontParameter.minFilter = Texture.TextureFilter.Linear;
         fontParameter.magFilter = Texture.TextureFilter.Linear;
 
         BitmapFont font = fontGenerator.generateFont(fontParameter);
+        font.getData().setScale(0.5f);
 
         skin.add("font", font, BitmapFont.class);
 

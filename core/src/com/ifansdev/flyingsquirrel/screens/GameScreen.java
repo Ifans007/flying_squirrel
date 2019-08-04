@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.ifansdev.flyingsquirrel.MyGame;
+import com.ifansdev.flyingsquirrel.actors.Score;
 import com.ifansdev.flyingsquirrel.actors.movingforeground.Flower;
 import com.ifansdev.flyingsquirrel.actors.Forest;
 import com.ifansdev.flyingsquirrel.actors.Squirrel;
@@ -24,22 +25,26 @@ public class GameScreen extends BaseScreen {
 
     private final float SPEED = 200f;
 
+    private Score score;
+
     public GameScreen(MyGame myGame) {
         super(myGame);
 
         squirrel = new Squirrel(myGame);
 
+        Image ground = new Image(myGame.getAssets().getTexture(Assets.GROUND));
+
+        score = new Score(myGame, screenHeight);
+
         stoneArray = new Array<>();
         for (int i = 0; i < COUNT_STONE; i++) {
-            stoneArray.add(new Stone(myGame, i + 1, COUNT_STONE, stoneArray, screenWidth, SPEED));
+            stoneArray.add(new Stone(myGame, i + 1, COUNT_STONE, stoneArray, screenWidth, SPEED, score));
         }
 
         flowerArray = new Array<>();
         for (int i = 0; i < COUNT_FLOWER; i++) {
             flowerArray.add(new Flower(myGame, i + 1, COUNT_STONE, flowerArray, screenWidth, SPEED));
         }
-
-        Image ground = new Image(myGame.getAssets().getTexture(Assets.GROUND));
 
         stage.addListener(new ClickListener() {
             @Override
@@ -55,6 +60,7 @@ public class GameScreen extends BaseScreen {
 
         stage.addActor(squirrel);
         stage.addActor(ground);
+        stage.addActor(score);
         for (int i = 0; i < stoneArray.size; i++) {
             stage.addActor(stoneArray.get(i));
         }
@@ -72,7 +78,8 @@ public class GameScreen extends BaseScreen {
         for (Stone stone : stoneArray) {
             if (stone.getX() < 75) {
                 if (squirrel.collides(stone.getBoundStone())) {
-                    System.out.println("gameOver");
+                    myGame.setScreen(new GameOverScreen(myGame, stage));
+                    score.checkScore();
                 }
             }
         }

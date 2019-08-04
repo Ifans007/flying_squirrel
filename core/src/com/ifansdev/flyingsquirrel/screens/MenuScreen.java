@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -11,6 +12,8 @@ import com.ifansdev.flyingsquirrel.MyGame;
 import com.ifansdev.flyingsquirrel.actors.Forest;
 
 public class MenuScreen extends BaseScreen {
+
+    private Label highScore;
 
     private Button menuStartBtn;
 
@@ -20,6 +23,13 @@ public class MenuScreen extends BaseScreen {
         super(myGame);
 
         stage.addActor(new Forest(myGame));
+
+        highScore = new Label(
+                "High Score " + myGame.getSaveScore().getHighScore(),
+                myGame.getAssets().getSkin());
+        highScore.setPosition(10, screenHeight - 22);
+
+        stage.addActor(highScore);
 
         createBtn(myGame.getAssets().getSkin());
 
